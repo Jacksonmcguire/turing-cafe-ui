@@ -1,0 +1,21 @@
+.reservations {
+  display: grid;
+  grid-template: auto / repeat(5, 30vh);
+  grid-gap: 15px;
+}
+
+article {
+  background-color: whitesmoke;
+  border: 5px solid teal;
+  border-radius: 15px;
+  height: 30vh;
+  color: teal
+}
+
+article button {
+  background-color: teal;
+  border: none;
+  color: whitesmoke;
+  width: 90%;
+  padding: 5px;
+}
