@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Reservations } from '../Reservations/Reservations'
+import {Form} from '../Form/Form'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      reservations: []
+      reservations: [],
+      error: ''
     }
   }
 
@@ -24,14 +26,22 @@ class App extends Component {
     .then(data => this.setState({reservations: data}))
   }
 
+  createRes = (resObj) => {
+    if (!isNaN(resObj.number)) {
+      console.log('hello')
+      this.setState({reservations: [...this.state.reservations, resObj]})
+    } else {
+      this.setState({...this.state, error: 'Need a number for guests'})
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <div className='resy-form'>
-
-        </div>
-        <Reservations resys={this.state.reservations} className='resy-container'>
+        {this.state.error && <p className="error">{this.state.error}</p>}
+        <Form createRes={this.createRes}></Form>
+        <Reservations resys={this.state.reservations}>
         </Reservations>
       </div>
     )
