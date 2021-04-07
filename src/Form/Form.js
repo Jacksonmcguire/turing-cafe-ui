@@ -19,7 +19,7 @@ export class Form extends Component {
   }
 
   handleSubmit = (e) => {
-    this.setState({...this.state, number: Number(this.state.number)})
+    this.setState({...this.state, number: Number(this.state.number), id: Date.now()})
     e.preventDefault()
     this.props.createRes(this.state)
   }
