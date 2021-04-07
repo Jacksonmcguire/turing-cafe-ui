@@ -29,7 +29,6 @@ class App extends Component {
 
   createRes = (resObj) => {
     if (!isNaN(resObj.number)) {
-      this.setState({reservations: [...this.state.reservations, resObj]})
       this.postRes(resObj);
     } else {
       this.setState({...this.state, error: 'Need a number for guests'})
@@ -37,13 +36,16 @@ class App extends Component {
   }
 
   postRes = (obj) => {
-    fetch('http://localhost:3001/api/v1/reservations', {
-      method: 'POST',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify(obj)
-    })
-    .then(res => this.checkForError(res))
-    .catch(err => alert(err.message))
+    if (!this.state.reservations.find(res => obj.date === res.date && obj.time === res.time)) {
+      this.setState({reservations: [...this.state.reservations, obj]})
+      fetch('http://localhost:3001/api/v1/reservations', {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify(obj)
+      })
+      .then(res => this.checkForError(res))
+      .catch(err => alert(err.message))
+    }
   }
 
   cancelRes = (id) => {
