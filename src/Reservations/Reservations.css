@@ -1,6 +1,6 @@
 .reservations {
   display: grid;
-  grid-template: auto / repeat(5, 30vh);
+  grid-template: auto / repeat(5, 1fr);
   grid-gap: 15px;
 }
 
@@ -9,6 +9,7 @@ article {
   border: 5px solid teal;
   border-radius: 15px;
   height: 30vh;
+  width: 100%;
   color: teal
 }
 

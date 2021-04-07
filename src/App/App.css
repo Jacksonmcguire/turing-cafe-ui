@@ -10,10 +10,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  color: teal
 }
 
 .app-title {
   color: teal;
   font-family: 'Pacifico', cursive;
   font-size: 50px;
+}
+.error {
+  padding: 10px;
+  background-color: whitesmoke;
 }
